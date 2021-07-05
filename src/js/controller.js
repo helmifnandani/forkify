@@ -11,11 +11,6 @@ import 'regenerator-runtime/runtime';
 import 'core-js/stable';
 import { Recoverable } from 'repl';
 
-// Ini code dari parcel
-// if (module.hot) {
-//   module.hot.accept();
-// }
-
 const { async } = require('q');
 
 const controlRecipes = async function () {
@@ -61,7 +56,6 @@ const controlSearchResults = async function () {
     await model.loadSearchResults(query);
 
     // 3) Render results
-    // resultsView.render(model.state.search.results);
     resultsView.render(model.getSearchResultsPage());
 
     // 4) Render initial pagination buttons
@@ -133,10 +127,6 @@ const controlAddRecipe = async function (newRecipe) {
   }
 };
 
-const newFeature = function () {
-  console.log('Welcome to');
-};
-
 const init = function () {
   // Subscriber. Dalam Publisher-Subscriber Pattern
   bookmarksView.addHandlerRender(controlBookmarks);
@@ -146,6 +136,5 @@ const init = function () {
   searchView.addHandlerSearch(controlSearchResults);
   paginationView.addHandlerClick(controlPagination);
   addRecipeView.addHandlerUpload(controlAddRecipe);
-  newFeature();
 };
 init();
